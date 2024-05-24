@@ -154,13 +154,11 @@ if auth_token:
                         availability = 100.0
                     else:
                         availability = calculate_availability(events, start_date, end_date)
-                    # Adicione os dados do host à lista com formatação para 4 casas decimais
                     host_data.append({
                         "host": host['name'],
                         "availability": f"{availability:.4f}%"
                     })
                     
-                    # Classificar os hosts em grupos e acumular disponibilidade
                     if host['name'].startswith('S'):
                         switch_hosts.append(availability)
                     elif host['name'].startswith(('cluster', 'clt', 'R')):
